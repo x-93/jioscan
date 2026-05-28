@@ -1,0 +1,615 @@
+@use "sass:color";
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+@import url(https://fonts.googleapis.com/css?family=Anton);
+@import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap);
+
+$color1: #f8fafc;       // Slate-50: Clean off-white text
+$color2: #10b981;       // Emerald: Premium bright mint green accent
+$color3: #4f46e5;       // Indigo: Modern secondary brand accent
+$color4: #64748b;       // Slate-500: Muted grey text/borders
+$color5: #090b11;       // Sleek ultra-dark background
+$superdark: $color5;
+
+$theme-colors: (
+  "primary": $color2,
+  "info": #111523,
+  "success": #10b981,
+  "warning": #f59e0b,
+  "danger": #ef4444,
+  "dark": #0d101d,
+  "light": $color1,
+  "secondary": $color3
+);
+
+$border-radius: 12px;
+$nav-link-color: $color1;
+
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $superdark;
+  color: $color1;
+
+  // Modern scrollbar styling
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $color5;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+}
+
+#navbar-container {
+  max-width: 1300px;
+}
+
+.navbar {
+  background: rgba(9, 11, 17, 0.8) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 0.8rem 1rem;
+}
+
+#navbar_top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-price {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  color: $color2;
+  font-size: 1.1rem;
+  padding: 0rem 1.5rem;
+  text-shadow: 0 0 10px rgba($color2, 0.2);
+}
+
+.navbar-title {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+@include media-breakpoint-up(md) {
+  .navbar-title {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+}
+
+.search-row {
+  background: linear-gradient(180deg, rgba($color3, 0.08) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 1rem 0;
+}
+
+.search-box-group {
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  .form-control {
+    border-radius: 12px 0 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: $color1 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 0.75rem 1.25rem;
+    transition: all 0.25s ease;
+
+    &:focus {
+      border-color: rgba($color2, 0.5);
+      box-shadow: 0 0 15px rgba($color2, 0.15);
+      background-color: rgba(255, 255, 255, 0.08) !important;
+    }
+  }
+
+  .searchButton {
+    border-radius: 0 12px 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: none;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: $color2;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background-color: $color2;
+      color: $color5;
+    }
+  }
+}
+
+.beta {
+  position: relative;
+  top: 0.5rem;
+  left: -3rem;
+  font-family: 'Righteous', cursive;
+  color: $color2;
+  opacity: 0;
+  animation: appear 1s linear forwards;
+}
+
+@include media-breakpoint-down(sm) {
+  .beta {
+    left: -2rem;
+    top: 0.5rem;
+  }
+}
+
+.beta-dashboard {
+  position: relative;
+  top: -1rem;
+  left: -2rem;
+  font-family: 'Righteous', cursive;
+  color: $color2;
+  opacity: 0;
+  animation: appear 1s linear forwards;
+}
+
+@include media-breakpoint-up(md) {
+  .beta-dashboard {
+    left: -2.5rem;
+    top: 0.5rem;
+  }
+}
+
+@keyframes appear {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.bigfont {
+  color: $color1 !important;
+  font-family: 'Righteous', sans-serif;
+  font-weight: normal;
+  font-size: 3rem;
+  line-height: 4rem;
+  margin-top: 1rem;
+  text-shadow: 0 0 40px rgba($color2, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: left;
+}
+
+@include media-breakpoint-up(md) {
+  .bigfont {
+    margin-top: 4rem;
+    font-size: 4.4rem;
+    line-height: 4.4rem;
+  }
+}
+
+.big-jio-icon {
+  position: relative;
+  margin-bottom: -3rem;
+  top: 0rem;
+  left: 0rem;
+  width: 0rem;
+  height: 0rem;
+  animation: rotate-icon 4s ease-in-out infinite alternate;
+}
+
+@include media-breakpoint-up(md) {
+  .big-jio-icon {
+    width: 10rem;
+    height: 10rem;
+    filter: drop-shadow(0 0 20px rgba($color2, 0.4));
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .kas-badge {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+@keyframes rotate-icon {
+  from { transform: rotate(12deg) scale(0.95); }
+  to { transform: rotate(-12deg) scale(1.05); }
+}
+
+.big-page {
+  text-align: center;
+}
+
+.navbar-brand {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}
+
+.navbar-brand a {
+  text-decoration: none;
+}
+
+.navbar-nav {
+  height: 100%;
+}
+
+.nav-link {
+  align-items: center;
+  color: $color4 !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: $color2 !important;
+  }
+}
+
+.active {
+  color: $color2 !important;
+  font-weight: 600;
+}
+
+.navbar-brand-text {
+  color: $color1;
+  text-decoration: none;
+  font-family: 'Righteous', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
+}
+
+@include media-breakpoint-down(sm) {
+  .navbar-brand-text {
+    font-size: 1.4rem;
+  }
+}
+
+.webpage {
+  max-width: 1300px;
+}
+
+.row1 {
+  color: $color1;
+  background: radial-gradient(circle at 10% 20%, rgba($color3, 0.12) 0%, rgba(0,0,0,0) 70%), linear-gradient(180deg, #090b11 0%, #0e111b 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: start;
+}
+
+.row2 {
+  background-color: $color5;
+}
+
+@include media-breakpoint-up(sm) {
+  .secondRow {
+    padding: 3rem 1rem;
+  }
+}
+
+.row4 {
+  background-color: $color5;
+}
+
+@include media-breakpoint-up(sm) {
+  .fourthRow {
+    padding: 2rem 1rem 4rem 1rem;
+  }
+}
+
+.block-overview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $color1;
+  background: rgba(20, 25, 41, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.hide-button {
+  cursor: pointer;
+  scale: 1.25;
+  color: $color4;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: $color2;
+  }
+}
+
+.hide-button-active {
+  color: $color2;
+}
+
+.block-overview-content {
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.rotate {
+  animation: spin 2.5s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.block-overview-header {
+  padding-bottom: 1.5rem;
+  color: $color1;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.styled-table {
+  width: 100%;
+  color: $color1;
+  border-collapse: collapse;
+
+  thead th {
+    color: $color4;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+
+  tbody tr,
+  tbody .table-row-link-styled {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+    background: transparent;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.02);
+      color: $color2 !important;
+
+      td {
+        color: $color2 !important;
+      }
+    }
+  }
+
+  td,
+  .table-cell-link-styled {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+    padding: 0.85rem 1rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.table-row-link-styled {
+  display: table-row;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.table-cell-link-styled {
+  display: table-cell;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: $color2;
+  }
+}
+
+.blockinfo-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardBox {
+  color: $color1;
+  margin: 1.5rem 0.5rem;
+  background: rgba(20, 25, 41, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 18rem;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+
+  table {
+    width: 100%;
+    
+    h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: $color1;
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    background: rgba(26, 32, 53, 0.65);
+    border-color: rgba($color2, 0.35);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba($color2, 0.1);
+  }
+}
+
+.cardLight {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  box-shadow: 0px 0px 100px 20px rgba($color2, 0.3);
+  z-index: 2;
+  transition: box-shadow 0.3s ease;
+}
+
+.cardBox:hover .cardLight {
+  box-shadow: 0px 0px 120px 30px rgba($color2, 0.45);
+}
+
+.cardBoxElement {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  color: $color4;
+  padding-right: 1.5rem;
+  text-transform: none;
+  font-size: 0.95rem;
+  padding-bottom: 0.5rem;
+}
+
+.pt-1 {
+  padding-bottom: 0.5rem;
+}
+
+.blocks-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $color5;
+}
+
+.blocks-page-overview {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.hashh {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 1px;
+}
+
+.play-button {
+  cursor: pointer;
+  animation-name: spinIcon;
+  animation-duration: 0.3s;
+  margin: 1.5rem 0.5rem;
+  color: $color4;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: $color2;
+  }
+}
+
+.rank {
+  background-color: rgba($color2, 0.15) !important;
+  color: $color2 !important;
+  border: 1px solid rgba($color2, 0.3);
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: $color2 !important;
+    color: $color5 !important;
+    text-decoration: none;
+  }
+}
+
+.approx {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.footerfull {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #06080d;
+}
+
+.footer {
+  width: 100%;
+  color: $color4;
+}
+
+.build {
+  font-size: 0.8rem;
+  color: $color4;
+}
+
+.madewith {
+  font-size: 0.85rem;
+}
+
+.pagination {
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+}
+
+.page-link {
+  padding: 0.5rem 0.85rem;
+}
+
+.dashboard-search-box {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  max-width: 700px;
+  margin: 0 auto;
+
+  .form-control {
+    border-radius: 12px 0 0 12px;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: $color1 !important;
+    font-size: 1.05rem;
+    padding: 0.9rem 1.5rem;
+
+    &:focus {
+      border-color: rgba($color2, 0.4);
+      box-shadow: 0 0 20px rgba($color2, 0.15);
+      background-color: rgba(255, 255, 255, 0.08) !important;
+    }
+  }
+
+  .searchButton {
+    border-radius: 0 12px 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: none;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: $color2;
+    padding: 0.9rem 2rem;
+
+    &:hover {
+      background-color: $color2;
+      color: $color5;
+    }
+  }
+}
+
+@import "./components/blockinfo.scss";
+@import "./components/addressinfo.scss";
